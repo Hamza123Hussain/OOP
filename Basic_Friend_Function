@@ -1,0 +1,42 @@
+
+#include <iostream>
+using namespace std;
+
+/* Friend Function helps us to provide acess to data members of a class that are private or protected
+ to a normal function*/
+class b;
+class a{
+  string name;
+  int age;
+  public:
+  friend void details(a obj1, b obj2);// friend function needs to be called in all the classes which use it
+    
+};
+class b{
+  int salary;
+  public:
+  friend void details(a obj1, b obj2);// friend function needs to be called in all the classes which use it
+    
+};
+
+void details (a obj1,b obj2){
+    std::cout << "enter name : " << std::endl;
+std::cin >> obj1.name;
+std::cout << "enter age : " << std::endl;
+    cin>> obj1.age;
+    
+    obj2.salary = obj1.age*72;
+    std::cout << "enter salary : " <<obj2.salary<< std::endl;
+
+
+    
+}
+
+int main()
+{
+a a1;
+b b3;
+details(a1,b3);
+
+    return 0;
+}
