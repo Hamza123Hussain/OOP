@@ -1,0 +1,171 @@
+#include <iostream>
+using namespace std;
+/* overloading operators are developed because we can not carry out any arthimetic operation on objects
+in the main like we carry them out on variables.
+*/
+class rectangle{
+float length ;
+  float width ;
+  public:
+  rectangle(){
+      length=2;
+      width=7;
+  }
+  
+  rectangle(float l,float w){
+      length=l;
+      width=w;
+  }
+  
+  rectangle operator +(rectangle r){// return is a must in the operator overloading
+      rectangle temp;
+      temp.length = length + r.length;
+      temp.width = width +r.width;
+      
+      return temp;
+  }
+  rectangle operator -(rectangle r){// return is a must in the operator overloading
+      rectangle temp;
+      temp.length = length - r.length;
+      temp.width = width - r.width;
+      
+      return temp;
+  }
+  rectangle operator *(rectangle r){// return is a must in the operator overloading
+      rectangle temp;
+      temp.length = length * r.length;
+      temp.width = width * r.width;
+      
+      return temp;
+  }
+  rectangle operator /(rectangle r){// return is a must in the operator overloading
+      rectangle temp;
+      temp.length = length / r.length;
+      temp.width = width /  r.width;
+      
+      return temp;
+  }
+  
+rectangle operator++(){
+      rectangle temp;
+  
+      temp.length=length++;
+      temp.width=width++;
+          return temp;
+  }
+  
+rectangle operator--(){
+      rectangle temp;
+  
+      temp.length=length--;
+      temp.width=width--;
+      
+      return temp;
+  }
+  
+  rectangle operator--(int){/* int argument needs to passed either with post or pre increment and decrement overloading
+  so that the compiler can differentiate between both of these functions.*/
+      rectangle temp;
+      
+      temp.length=--length;
+      temp.width=--width;
+         return temp;
+  }
+  
+     rectangle operator++(int){
+         rectangle temp;
+      temp.length = ++length;
+      temp.width = ++width;;
+      
+      return temp;
+  }
+  
+  float showlength(){
+      return length;
+  }
+  
+  float showwidth(){
+      return width;}
+      
+  float area(){
+      return length*width;
+  }
+ 
+};
+
+int main()
+{
+rectangle r1(2,3);
+rectangle r2(3,5);
+
+rectangle r3(12,2);
+
+rectangle r4;
+
+r4 = r1+r2+r3;// sum of widths of these 3 will be width of r4 . same case of r4's Length
+std::cout << "Length of rectangle :" << r4.showlength()<< std::endl;
+cout<<"Width of rectangle : "<<r4.showwidth()<<endl;
+std::cout << "Area with + operator overloading" << std::endl;
+cout<<r4.area()<<endl;
+cout<<""<<endl;
+
+r4 = r3-r2;// subraction of these 2 will result in r4's Length and Width
+std::cout << "Length of rectangle :" << r4.showlength()<< std::endl;
+cout<<"Width of rectangle : "<<r4.showwidth()<<endl;
+std::cout << "Area with - operator overloading" << std::endl;
+cout<<r4.area()<<endl;
+cout<<""<<endl;
+
+r4 = r3*r2*r1;// multipication of these 3 will result in r4's Length and Width
+std::cout << "Length of rectangle :" << r4.showlength()<< std::endl;
+cout<<"Width of rectangle : "<<r4.showwidth()<<endl;
+std::cout << "Area with * operator overloading" << std::endl;
+cout<<r4.area()<<endl;
+cout<<""<<endl;
+
+
+
+r4 = r3/r2/r1;//division of these 3 will result in r4's Length and Width
+std::cout << "Length of rectangle :" << r4.showlength()<< std::endl;
+cout<<"Width of rectangle : "<<r4.showwidth()<<endl;
+std::cout << "Area with / operator overloading" << std::endl;
+cout<<r4.area()<<endl;
+cout<<""<<endl;
+
+cout<<"postfix increment overloading done below :"<<endl;
+r4++;
+std::cout << "Length of rectangle :" << r4.showlength()<< std::endl;
+cout<<"Width of rectangle : "<<r4.showwidth()<<endl;
+std::cout << "Area with / operator overloading" << std::endl;
+cout<<r4.area()<<endl;
+cout<<""<<endl;
+
+cout<<"postfix decrement overloading done below :"<<endl;
+r4--;
+std::cout << "Length of rectangle :" << r4.showlength()<< std::endl;
+cout<<"Width of rectangle : "<<r4.showwidth()<<endl;
+std::cout << "Area with / operator overloading" << std::endl;
+cout<<r4.area()<<endl;
+cout<<""<<endl;
+
+
+cout<<"prefix decrement overloading done below :"<<endl;
+--r4;
+std::cout << "Length of rectangle :" << r4.showlength()<< std::endl;
+cout<<"Width of rectangle : "<<r4.showwidth()<<endl;
+std::cout << "Area with / operator overloading" << std::endl;
+cout<<r4.area()<<endl;
+cout<<""<<endl;
+
+cout<<"prefix increment overloading done below :"<<endl;
+++r4;
+std::cout << "Length of rectangle :" << r4.showlength()<< std::endl;
+cout<<"Width of rectangle : "<<r4.showwidth()<<endl;
+std::cout << "Area with / operator overloading" << std::endl;
+cout<<r4.area()<<endl;
+    return 0;
+}
+
+
+
+
